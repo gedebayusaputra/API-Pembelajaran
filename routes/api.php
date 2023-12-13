@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login',[AuthController::class, 'login']);
+Route::middleware(['middleware'=>'auth:sanctum'],function () {
+});
+
+Route::apiResource('Category', BukuController::class);
+Route::post('categrooty/{category}',[BukuController::class, 'update']);
